@@ -40,3 +40,51 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+const navLinks = document.querySelectorAll('header nav a');
+const navLinksArr = Array.from(navLinks);
+for (let i = 0; i < 6; i++){
+  navLinksArr[i].textContent = siteContent['nav'][`nav-item-${i+1}`]
+};
+
+const titleHeading = document.querySelector('.cta .cta-text h1');
+
+titleHeading.innerHTML = siteContent.cta.h1;
+
+const titleButton = document.querySelector('.cta-text button');
+
+titleButton.textContent = siteContent.cta.button;
+
+const titleImg = document.getElementById('cta-img');
+titleImg.src = siteContent.cta["img-src"];
+
+const contentSubheadings = document.querySelectorAll('.text-content h4');
+
+const mainContentKeys = Object.keys(siteContent["main-content"]);
+
+const h4Keys = mainContentKeys.filter(key => key.includes('h4'));
+
+
+
+const contentText = document.querySelectorAll('.text-content p');
+
+const contentKeys = mainContentKeys.filter(key => key.includes('-content'));
+
+for (let i = 0; i < h4Keys.length ; i++) {
+  contentSubheadings[i].textContent = siteContent["main-content"][`${h4Keys[i]}`];
+  contentText[i].textContent = siteContent["main-content"][`${contentKeys[i]}`];
+}
+
+const middleImg = document.getElementById('middle-img');
+middleImg.src = siteContent["main-content"]["middle-img-src"];
+
+const contactKeys = Object.keys(siteContent.contact);
+
+const contactElements = document.querySelectorAll('.contact > *');
+
+for (let i = 0; i < contactKeys.length; i++) {
+  contactElements[i].textContent = siteContent.contact[contactKeys[i]];
+}
+
+const footer = document.querySelector('footer p');
+footer.textContent = siteContent.footer.copyright;
